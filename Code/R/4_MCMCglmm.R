@@ -1,6 +1,7 @@
 #!/usr/bin/env R
 rm(list = ls())
 
+library(MCMCglmm)
 #####################################################
 # Day 4 Population Dynamics Practical
 #####################################################
@@ -107,7 +108,7 @@ plot(mod1$VCV) # Pretty bad model fit, even the mean varies over time
 Repeatability <- mod1$VCV[,"female"]/(mod1$VCV[,"female"] + mod1$VCV[, "units"])
 # The	last	line	calculates	the	ratio	of	variance	explained	by	between-individual	differences	
 # over	total	phenotypic	variance.	Then	we	can	display	the	mode	and	95	credibility	interval:	
-osterior.mode(Repeatability)
+posterior.mode(Repeatability)
 HPDinterval(Repeatability)
 
 # Next, calculate the heritability of standardised laying date. To do this we need the pedigree
